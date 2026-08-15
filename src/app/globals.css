@@ -1,26 +1,231 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * VCAD design tokens — sampled from the "VCAD — Design Tokens" frame.
+ *
+ * Every colour, radius and type size in the app resolves through this block.
+ * Design token names are kept verbatim so a value can be traced back to the
+ * frame it came from.
+ */
+@theme {
+  /* 1 · Colour — surfaces */
+  --color-base: #0a0a1e;
+  --color-deep: #020928;
+  --color-card: #061051;
+  --color-card-alt: #0a1d3d;
+  --color-navy: #061665;
+  --color-border: #394564;
+
+  /* 1 · Colour — accent */
+  --color-pink: #ff3798;
+  --color-magenta: #e018b0;
+  --color-magenta-lt: #e948b6;
+  --color-plum: #912491;
+  --color-blue: #2262eb;
+  --color-cyan: #00ffd2;
+
+  /* 1 · Colour — light & text */
+  --color-text: #e8ecf3;
+  --color-white: #ffffff;
+  --color-sky: #88c9ee;
+  --color-pale-blue: #d7e2fb;
+  --color-pale-blue-2: #c1f2fd;
+  --color-ice-blue: #e9f7ff;
+
+  /* Sampled from section frames, not on the token sheet — the frame notes that
+     individual elements may use values not listed on it. */
+  --color-indigo: #3d4a91;
+
+  /* Semantic aliases — what the markup actually reaches for. */
+  --color-accent: var(--color-pink);
+  --color-muted: var(--color-sky);
+
+  /* 2 · Typography — Inter throughout */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Homepage hero runs larger than the token frame's display size — the frame
+     notes that individual elements may use values not listed on it. */
+  --text-hero: 7.5rem; /* 120 Bold */
+  --text-hero--line-height: 1;
+  --text-hero--letter-spacing: -0.02em;
+  --text-hero--font-weight: 700;
+
+  --text-display: 4.25rem; /* 68 Bold */
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 700;
+
+  --text-page-title: 3.75rem; /* 60 Bold */
+  --text-page-title--line-height: 1.06;
+  --text-page-title--letter-spacing: -0.028em;
+  --text-page-title--font-weight: 700;
+
+  --text-section: 3rem; /* 48 Bold */
+  --text-section--line-height: 1.1;
+  --text-section--letter-spacing: -0.025em;
+  --text-section--font-weight: 700;
+
+  --text-subheading: 2.25rem; /* 36 Semi Bold */
+  --text-subheading--line-height: 1.18;
+  --text-subheading--letter-spacing: -0.02em;
+  --text-subheading--font-weight: 600;
+
+  --text-card-title: 1.375rem; /* 22 Semi Bold */
+  --text-card-title--line-height: 1.3;
+  --text-card-title--letter-spacing: -0.01em;
+  --text-card-title--font-weight: 600;
+
+  --text-lead: 1.25rem; /* 20 Regular */
+  --text-lead--line-height: 1.55;
+  --text-lead--font-weight: 400;
+
+  --text-body: 1.125rem; /* 18 Regular */
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+
+  --text-default: 1rem; /* 16 Medium — most-used size in the file */
+  --text-default--line-height: 1.5;
+  --text-default--font-weight: 500;
+
+  --text-meta: 0.75rem; /* 12 Medium */
+  --text-meta--line-height: 1.4;
+  --text-meta--font-weight: 500;
+
+  --text-micro: 0.625rem; /* 10 Medium */
+  --text-micro--line-height: 1.4;
+  --text-micro--font-weight: 500;
+
+  /* 3 · Radius & layout */
+  --radius-card: 12px;
+  --radius-pill: 34px;
+  --radius-button: 20px;
+  --radius-chip: 4px;
+  --radius-arrow: 9999px;
+
+  --container-frame: 90rem; /* 1440px frame width */
+  /* Circular arrow diameter, measured off the section frames. The 57px on the
+     token sheet is the radius that makes them fully round, not the size. */
+  --spacing-arrow: 72px;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-base);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-default);
+    font-weight: 500;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+  }
+
+  ::selection {
+    background-color: var(--color-pink);
+    color: var(--color-white);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+    border-radius: var(--radius-chip);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Eyebrow / label treatment used above section headings. */
+@utility eyebrow {
+  font-size: var(--text-meta);
+  line-height: var(--text-meta--line-height);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* The pink → magenta accent sweep the design uses on key surfaces. */
+@utility accent-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-pink) 0%,
+    var(--color-magenta) 55%,
+    var(--color-plum) 100%
+  );
+}
+
+@utility accent-text {
+  background-image: linear-gradient(100deg, var(--color-pink) 0%, var(--color-cyan) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Horizontal rails: snap + drag, with the scrollbar hidden. */
+@utility rail {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes vcad-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@utility skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-card);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgb(136 201 238 / 0) 0%,
+      rgb(136 201 238 / 0.14) 50%,
+      rgb(136 201 238 / 0) 100%
+    );
+    animation: vcad-shimmer 1.6s infinite;
+  }
 }

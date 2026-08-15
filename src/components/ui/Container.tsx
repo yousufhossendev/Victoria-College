@@ -1,0 +1,16 @@
+import type { ReactNode } from "react";
+
+/** 1440px frame width from the token frame, with responsive gutters inside it. */
+export function Container({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-frame px-5 sm:px-8 lg:px-20 ${className}`}>
+      {children}
+    </div>
+  );
+}
