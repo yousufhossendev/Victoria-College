@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { CourseDetailHero } from "@/components/course/CourseDetailHero";
-import { CourseTabs } from "@/components/course/CourseTabs";
+import { CourseSectionNav } from "@/components/course/CourseSectionNav";
 import { CourseInformation } from "@/components/course/CourseInformation";
 import { CourseStructure } from "@/components/course/CourseStructure";
 import { CourseAdmissions } from "@/components/course/CourseAdmissions";
@@ -10,6 +10,13 @@ import { getCourse, getCourseSlugs } from "@/lib/courses";
 import type { Course } from "@/lib/types";
 
 type Params = Promise<{ slug: string }>;
+
+/** Section ids double as the in-page anchors, so they are defined once. */
+const SECTIONS = [
+  { id: "course-overview", label: "Course Overview" },
+  { id: "course-structure-details", label: "Course Structure & Details" },
+  { id: "admissions-key-details", label: "Admissions & Key Details" },
+] as const;
 
 export function generateStaticParams() {
   return getCourseSlugs().map((slug) => ({ slug }));
@@ -32,29 +39,30 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
     <>
       <CourseDetailHero course={course} />
 
-      <section data-section="course-tabs" className="bg-card pb-20 pt-14 lg:pb-28 lg:pt-16">
+      <div data-section="course-body" className="bg-card pb-20 pt-14 lg:pb-28 lg:pt-16">
         <Container>
-          <CourseTabs
-            tabs={[
-              {
-                id: "overview",
-                label: "Course Overview",
-                content: <OverviewPanel course={course} />,
-              },
-              {
-                id: "structure",
-                label: "Course Structure & Details",
-                content: <CourseStructure course={course} />,
-              },
-              {
-                id: "admissions",
-                label: "Admissions & Key Details",
-                content: <CourseAdmissions course={course} />,
-              },
-            ]}
-          />
+          <CourseSectionNav sections={SECTIONS} />
+
+          {/*
+            Sections run one after another rather than behind tabs, so every one
+            is reachable by link, findable with in-page search and printable.
+            scroll-mt clears the sticky header when an anchor is followed.
+          */}
+          <div className="mt-16 space-y-24 lg:mt-20 lg:space-y-32">
+            <section id={SECTIONS[0].id} aria-label={SECTIONS[0].label} className="scroll-mt-28">
+              <OverviewPanel course={course} />
+            </section>
+
+            <section id={SECTIONS[1].id} aria-label={SECTIONS[1].label} className="scroll-mt-28">
+              <CourseStructure course={course} />
+            </section>
+
+            <section id={SECTIONS[2].id} aria-label={SECTIONS[2].label} className="scroll-mt-28">
+              <CourseAdmissions course={course} />
+            </section>
+          </div>
         </Container>
-      </section>
+      </div>
     </>
   );
 }
@@ -62,6 +70,15 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 function OverviewPanel({ course }: { course: Course }) {
   return (
     <div className="space-y-16">
+      {/* Each stacked section carries its own heading now that they are not
+          behind tabs — otherwise the first one arrives unlabelled. */}
+      <div className="text-center">
+        <h2 className="text-card-title sm:text-subheading">Course Overview</h2>
+        <p className="mt-3 text-default text-pale-blue/70">
+          What the course covers and how it is taught.
+        </p>
+      </div>
+
       <div className="mx-auto max-w-4xl space-y-5 text-body text-pale-blue/75">
         {course.overview.map((paragraph) => (
           <p key={paragraph.slice(0, 40)}>{paragraph}</p>
