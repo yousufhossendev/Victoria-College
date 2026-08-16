@@ -41,7 +41,7 @@ export function CourseSectionNav({ sections }: { sections: readonly CourseSectio
 
   return (
     <nav aria-label="On this page" className="flex justify-center">
-      <ul className="flex max-w-full flex-wrap items-center justify-center gap-y-3 rounded-button border border-border bg-base px-6 py-5 sm:gap-x-13 sm:px-10 sm:py-7">
+      <ul className="flex max-w-full flex-wrap items-center justify-center gap-y-3 rounded-arrow border border-border bg-base px-6 py-5 sm:gap-x-16 sm:px-10 sm:py-7">
         {sections.map((section) => {
           const current = section.id === active;
           return (
@@ -49,7 +49,7 @@ export function CourseSectionNav({ sections }: { sections: readonly CourseSectio
               <a
                 href={`#${section.id}`}
                 aria-current={current ? "true" : undefined}
-                className={`px-3 text-body transition-colors sm:px-0 ${
+                className={`px-3 text-lead transition-colors sm:px-0 ${
                   current ? "text-pink" : "text-white hover:text-pink"
                 }`}
               >

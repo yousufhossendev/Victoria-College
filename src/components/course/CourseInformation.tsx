@@ -30,7 +30,7 @@ export function CourseInformation({ course }: { course: Course }) {
     <div>
       <div className="text-center">
         <h2 className="text-card-title sm:text-subheading">Course Information</h2>
-        <p className="mt-3 text-default text-pale-blue/70">
+        <p className="mt-3 text-body text-pale-blue/70">
           Everything you need to know about this course at a glance
         </p>
         <p className="sr-only">School: {schoolsById[course.schoolId].name}</p>

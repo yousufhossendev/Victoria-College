@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { CourseDetailHero } from "@/components/course/CourseDetailHero";
@@ -39,16 +40,37 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
     <>
       <CourseDetailHero course={course} />
 
-      <div data-section="course-body" className="bg-card pb-20 pt-14 lg:pb-28 lg:pt-16">
+      <div
+        data-section="course-body"
+        className="relative overflow-hidden bg-base pb-20 pt-9 lg:pb-28"
+      >
+        {/* The lighter band behind the hero photos runs on a little further,
+            and the tab pill is centred on where it stops. */}
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-20 bg-card" />
+
+        {/* Supplied arc backdrop. Decorative, and the 10% opacity is baked into
+            the asset, so it is dropped in as-is rather than re-drawn. */}
+        <Image
+          src="/icons/course-info-bg.svg"
+          alt=""
+          aria-hidden="true"
+          width={481}
+          height={642}
+          unoptimized
+          className="pointer-events-none absolute left-0 top-0 w-120.25 max-w-[40%] select-none"
+        />
+
         <Container>
-          <CourseSectionNav sections={SECTIONS} />
+          <div className="relative">
+            <CourseSectionNav sections={SECTIONS} />
+          </div>
 
           {/*
             Sections run one after another rather than behind tabs, so every one
             is reachable by link, findable with in-page search and printable.
             scroll-mt clears the sticky header when an anchor is followed.
           */}
-          <div className="mt-16 space-y-24 lg:mt-20 lg:space-y-32">
+          <div className="relative mt-9 space-y-24 lg:space-y-32">
             <section id={SECTIONS[0].id} aria-label={SECTIONS[0].label} className="scroll-mt-28">
               <OverviewPanel course={course} />
             </section>
@@ -67,11 +89,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
   );
 }
 
+/** The overview section is the information grid on its own for now. */
 function OverviewPanel({ course }: { course: Course }) {
-  return (
-   
-
-      <CourseInformation course={course} />
-    
-  );
+  return <CourseInformation course={course} />;
 }
