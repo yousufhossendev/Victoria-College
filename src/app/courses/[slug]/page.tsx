@@ -7,6 +7,7 @@ import { CourseSectionNav } from "@/components/course/CourseSectionNav";
 import { CourseInformation } from "@/components/course/CourseInformation";
 import { CourseStructure } from "@/components/course/CourseStructure";
 import { CourseAdmissions } from "@/components/course/CourseAdmissions";
+import { CourseSpecification } from "@/components/course/CourseSpecification";
 import { getCourse, getCourseSlugs } from "@/lib/courses";
 import type { Course } from "@/lib/types";
 
@@ -81,6 +82,9 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
             <section id={SECTIONS[2].id} aria-label={SECTIONS[2].label} className="scroll-mt-28">
               <CourseAdmissions course={course} />
+              <div className="mt-6">
+                <CourseSpecification course={course} />
+              </div>
             </section>
           </div>
         </Container>

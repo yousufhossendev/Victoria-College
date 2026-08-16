@@ -25,6 +25,22 @@ export const admissionsSection = {
   subheading: "Everything you need to know about applying and studying",
 } as const;
 
+/**
+ * The download panel under the admissions block. Copy is the same for every
+ * course; only the file behind it changes, which is why the link is built from
+ * the course rather than stored here.
+ */
+export const specificationPanel = {
+  heading: "Course Specification",
+  body: "Download the full course specification for detailed information.",
+  cta: "Download PDF",
+} as const;
+
+/** Where a course's specification PDF is expected to live. */
+export function specificationHref(slug: string): string {
+  return `/downloads/${slug}-specification.pdf`;
+}
+
 export const admissionGroups: AdmissionGroup[] = [
   {
     id: "entry-requirements",

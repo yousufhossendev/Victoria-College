@@ -66,6 +66,11 @@ export interface Course {
   modules: CourseModule[];
   careers: string[];
   entryRequirements: string[];
+  /**
+   * Overrides the conventional `/downloads/<slug>-specification.pdf` path used
+   * by the download panel. Set it when a course's PDF lives somewhere else.
+   */
+  specificationUrl?: string;
   faqs: CourseFaq[];
 }
 
