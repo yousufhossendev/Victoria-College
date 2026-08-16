@@ -44,11 +44,11 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
       <div
         data-section="course-body"
-        className="relative overflow-hidden bg-base pb-20 pt-9 lg:pb-28"
+        className="relative overflow-hidden bg-base pb-20 pt-14 lg:pb-28"
       >
         {/* The lighter band behind the hero photos runs on a little further,
             and the tab pill is centred on where it stops. */}
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-20 bg-card" />
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-24 bg-card" />
 
         {/* Supplied arc backdrop. Decorative, and the 10% opacity is baked into
             the asset, so it is dropped in as-is rather than re-drawn. */}
@@ -59,7 +59,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
           width={481}
           height={642}
           unoptimized
-          className="pointer-events-none absolute left-0 top-0 w-120.25 max-w-[40%] select-none"
+          className="pointer-events-none absolute left-0 top-0 z-0 w-120.25 max-w-[40%] select-none"
         />
 
         <Container>
