@@ -104,7 +104,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
   );
 }
 
-/** The overview section is the information grid on its own for now. */
+/** The overview section is the information grid on its own for now...*/
 function OverviewPanel({ course }: { course: Course }) {
   return <CourseInformation course={course} />;
 }
