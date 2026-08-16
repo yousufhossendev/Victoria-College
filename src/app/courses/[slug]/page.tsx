@@ -69,35 +69,9 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
 function OverviewPanel({ course }: { course: Course }) {
   return (
-    <div className="space-y-16">
-      {/* Each stacked section carries its own heading now that they are not
-          behind tabs — otherwise the first one arrives unlabelled. */}
-      <div className="text-center">
-        <h2 className="text-card-title sm:text-subheading">Course Overview</h2>
-        <p className="mt-3 text-default text-pale-blue/70">
-          What the course covers and how it is taught.
-        </p>
-      </div>
-
-      <div className="mx-auto max-w-4xl space-y-5 text-body text-pale-blue/75">
-        {course.overview.map((paragraph) => (
-          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-        ))}
-
-        <h3 className="pt-4 text-card-title text-white">Course highlights</h3>
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {course.highlights.map((highlight) => (
-            <li
-              key={highlight}
-              className="rounded-chip border border-border/60 bg-white/4 px-4 py-3.5 text-default text-pale-blue/80"
-            >
-              {highlight}
-            </li>
-          ))}
-        </ul>
-      </div>
+   
 
       <CourseInformation course={course} />
-    </div>
+    
   );
 }

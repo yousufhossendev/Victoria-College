@@ -205,6 +205,22 @@ export const coursesHero = {
   ],
 } as const;
 
+/**
+ * The three photos under the course-detail heading. They are supplied as one
+ * fixed set rather than per course — the shots are of the building and studios,
+ * not of any one programme — so every course page shows the same trio. The
+ * middle frame is the wide one.
+ */
+export const courseDetailPhotos = [
+  { id: "common-room", src: "/images/gallery/photo-3.jpg", alt: "Students talking in the common room" },
+  {
+    id: "pattern-table",
+    src: "/images/gallery/photo-4.jpg",
+    alt: "Students working on garment patterns in the studio",
+  },
+  { id: "lecture", src: "/images/gallery/photo-5.jpg", alt: "Course leader in a teaching session" },
+] as const;
+
 export const storySection = {
   eyebrow: "Stories",
   heading: "Our Stories",

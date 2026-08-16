@@ -1,8 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { ArcBackdrop } from "@/components/ui/ArcBackdrop";
 import { GridRules } from "@/components/layout/GridRules";
 import { Media } from "@/components/ui/Media";
+import { courseDetailPhotos } from "@/data/site";
 import type { Course } from "@/lib/types";
 
 /**
@@ -12,11 +13,19 @@ import type { Course } from "@/lib/types";
  * the band down as it grows.
  */
 export function CourseDetailHero({ course }: { course: Course }) {
-  const images = course.gallery.slice(0, 3);
-
   return (
     <section data-section="course-hero" className="relative overflow-hidden bg-base">
-      <ArcBackdrop viewBox="0 0 1440 620" cx={1330} cy={120} radii={[90, 150, 210, 270]} />
+      {/* Supplied arc backdrop. Decorative, and the 10% opacity is baked into
+          the asset, so it is dropped in as-is rather than re-drawn. */}
+      <Image
+        src="/icons/details-hero-bg.svg"
+        alt=""
+        aria-hidden="true"
+        width={615}
+        height={752}
+        unoptimized
+        className="pointer-events-none absolute right-0 top-0 w-153.75 max-w-[50%] select-none"
+      />
 
       <Container>
         <div className="relative">
@@ -63,13 +72,13 @@ export function CourseDetailHero({ course }: { course: Course }) {
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 hidden bg-card lg:block lg:h-49" />
 
       <Container>
-        <div className="relative z-10 grid grid-cols-1 gap-4.5 sm:grid-cols-[322fr_596fr_323fr]">
-          {images.map((image, index) => (
+        <div className="relative z-10 grid grid-cols-1 gap-6 sm:grid-cols-[322fr_596fr_323fr]">
+          {courseDetailPhotos.map((image, index) => (
             <Media
-              key={image.caption}
+              key={image.id}
               src={image.src}
-              alt={image.caption}
-              seed={`${course.slug}-hero-${index}`}
+              alt={image.alt}
+              seed={`${course.slug}-hero-${image.id}`}
               priority={index === 1}
               sizes="(min-width: 640px) 42vw, 100vw"
               className="h-56 w-full rounded-card lg:h-80"
