@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { GridRules } from "@/components/layout/GridRules";
 import { CircleArrow } from "@/components/ui/CircleArrow";
 import { Media } from "@/components/ui/Media";
+import { QuoteMark } from "@/components/ui/QuoteMark";
 import { testimonialSection, testimonials } from "@/data/site";
 
 export function Testimonials() {
@@ -18,7 +19,7 @@ export function Testimonials() {
     <section
       id="work"
       data-section="testimonials"
-      className="relative border-b border-border/50 bg-base"
+      className="relative  bg-base"
     >
       <Container>
         <div className="relative">
@@ -45,6 +46,7 @@ export function Testimonials() {
               aria-atomic="true"
             >
               <Media
+                src= "/images/testimonial.jpg"
                 key={active.id}
                 alt={`${active.name}, ${active.role}`}
                 seed={active.id}
@@ -53,7 +55,7 @@ export function Testimonials() {
               />
 
               <figure className="flex flex-col justify-center rounded-chip border border-border p-8 lg:px-11 lg:py-10">
-                <QuoteMark className="h-8 w-11 text-border" />
+                <QuoteMark className="h-8 w-11 rotate-180 text-border" />
 
                 <blockquote className="mt-6 text-lead text-pale-blue/85">{active.quote}</blockquote>
 
@@ -67,13 +69,5 @@ export function Testimonials() {
         </div>
       </Container>
     </section>
-  );
-}
-
-function QuoteMark({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 28" aria-hidden="true" className={className} fill="currentColor">
-      <path d="M0 28 7 0h11l-5 28H0Zm22 0L29 0h11l-5 28H22Z" />
-    </svg>
   );
 }

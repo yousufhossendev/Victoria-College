@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { QuoteMark } from "@/components/ui/QuoteMark";
 import { quoteSection } from "@/data/site";
 import { GridRules } from "../layout/GridRules";
 
@@ -22,14 +23,14 @@ export function QuotePanel() {
           />
 
           <figure className="relative z-10 lg:absolute lg:left-[5.9%] lg:top-[8%] lg:w-[56%]">
-            <QuoteMark className="h-8 w-11 lg:h-11 lg:w-14  rotate-180 " />
+            <QuoteMark className="h-8 w-11 rotate-180 text-white/20 lg:h-11 lg:w-14" />
             <blockquote className="mt-4 text-subheading text-white sm:text-section lg:text-page-title">
               {quoteSection.parts.map((part) => (
                 <span key={part.text} className={part.highlight ? "text-magenta" : undefined}>
                   {part.text}
                 </span>
               ))}
-              <QuoteMark className="ml-3 inline-block h-5 w-7 align-baseline lg:h-9 lg:w-12" />
+              <QuoteMark className="ml-3 inline-block h-5 w-7 align-baseline text-white/20 lg:h-9 lg:w-12" />
             </blockquote>
           </figure>
 
@@ -51,19 +52,5 @@ export function QuotePanel() {
         </div>
       </Container>
     </section>
-  );
-}
-
-/** Path lifted from public/icons/quote.svg; inlined so the opacity is a class. */
-function QuoteMark({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 67 51"
-      aria-hidden="true"
-      className={`text-white/20 ${className}`}
-      fill="currentColor"
-    >
-      <path d="M67 0L67 16.1905C67 20.5979 66.0995 25.0278 64.2984 29.4802C62.4973 33.9325 60.2235 38.0476 57.4768 41.8254C54.7302 45.6032 51.961 48.6614 49.1694 51L33.7702 43.1746C36.1116 39.2619 37.9351 35.1693 39.2409 30.8968C40.5017 26.6243 41.1095 21.7222 41.0645 16.1905L41.0645 -2.26735e-06L67 0ZM33.2298 -2.95228e-06L33.2298 16.1905C33.2298 20.5979 32.3293 25.0278 30.5282 29.4802C28.7272 33.9325 26.4533 38.0476 23.7067 41.8254C20.96 45.6032 18.1909 48.6614 15.3992 51L6.84118e-07 43.1746C2.3414 39.2619 4.16499 35.1693 5.47077 30.8968C6.73152 26.6243 7.33938 21.7222 7.29436 16.1905L7.29436 -5.21963e-06L33.2298 -2.95228e-06Z" />
-    </svg>
   );
 }
