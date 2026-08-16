@@ -214,30 +214,27 @@ export const partnerSection = {
 } as const;
 
 /**
- * Partner logos. `logo` is the path to an exported asset; until one exists the
- * wordmark below renders instead, so the section never shows a broken image.
+ * Partner logos. Each `logo` is a supplied full lockup — mark plus wordmark in
+ * one asset — so the wordmark is not set in markup. `width`/`height` are the
+ * export's own intrinsic size; both are drawn on the same 86px baseline, so
+ * rendering them at a shared height keeps them optically level.
  */
 export const partners = [
   {
     id: "ravensbourne",
     name: "Ravensbourne University London",
     href: "https://www.ravensbourne.ac.uk",
-    mark: "circle",
-    lines: [
-      { text: "Ravensbourne", bold: true },
-      { text: "University London", bold: false },
-    ],
+    logo: "/icons/LOGO-ARTWORK.svg",
+    width: 352,
+    height: 86,
   },
   {
     id: "arts-university-plymouth",
     name: "Arts University Plymouth",
     href: "https://www.aup.ac.uk",
-    mark: "arch",
-    lines: [
-      { text: "Arts", bold: true },
-      { text: "University", bold: true },
-      { text: "Plymouth", bold: true },
-    ],
+    logo: "/icons/aup-logo.svg",
+    width: 254,
+    height: 86,
   },
 ] as const;
 

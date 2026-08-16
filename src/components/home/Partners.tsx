@@ -1,15 +1,25 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { GridRules } from "@/components/layout/GridRules";
-import { ArcBackdrop } from "@/components/ui/ArcBackdrop";
 import { partners, partnerSection } from "@/data/site";
 
 export function Partners() {
   return (
     <section
       data-section="partners"
-      className="relative overflow-hidden border-b border-border/50 bg-base"
+      className="relative overflow-hidden  bg-[#020928]"
     >
-      <ArcBackdrop className="text-sky/10" viewBox="0 0 1440 669" cx={1262} cy={310} radii={[120, 200, 280, 360, 440]} />
+      {/* Supplied arc backdrop. Decorative, and the 10% opacity is baked into
+          the asset, so it is dropped in as-is rather than re-drawn. */}
+      <Image
+        src="/icons/partners-bg.svg"
+        alt=""
+        aria-hidden="true"
+        width={665}
+        height={584}
+        unoptimized
+        className="pointer-events-none absolute right-0 top-1/2 w-166.25 max-w-[70%] -translate-y-1/2 select-none"
+      />
 
       <Container>
         <div className="relative">
@@ -22,29 +32,24 @@ export function Partners() {
               <p className="mt-10 max-w-183 text-lead text-pale-blue/80">{partnerSection.body}</p>
             </div>
 
-            <ul className="flex flex-col gap-10 lg:pl-24">
+            {/* Centred against the copy column, which is the taller of the two. */}
+            <ul className="flex flex-col items-start gap-10 lg:justify-center lg:pl-24">
               {partners.map((partner) => (
                 <li key={partner.id}>
                   <a
                     href={partner.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    aria-label={partner.name}
-                    className="inline-flex items-center gap-5 text-white transition-opacity hover:opacity-75"
+                    className="inline-block transition-opacity hover:opacity-75"
                   >
-                    <PartnerMark shape={partner.mark} />
-                    <span aria-hidden="true">
-                      {partner.lines.map((line) => (
-                        <span
-                          key={line.text}
-                          className={`block text-card-title leading-[1.15] ${
-                            line.bold ? "font-bold" : "font-normal"
-                          }`}
-                        >
-                          {line.text}
-                        </span>
-                      ))}
-                    </span>
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      width={partner.width}
+                      height={partner.height}
+                      unoptimized
+                      className="h-14 w-auto lg:h-21.5"
+                    />
                   </a>
                 </li>
               ))}
@@ -53,25 +58,5 @@ export function Partners() {
         </div>
       </Container>
     </section>
-  );
-}
-
-/** Stand-in marks — replaced by the real logo exports when they land. */
-function PartnerMark({ shape }: { shape: "circle" | "arch" }) {
-  if (shape === "circle") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true" className="h-12 w-12 shrink-0">
-        <circle cx="24" cy="24" r="23" fill="currentColor" />
-        <path d="M10 38 38 10" stroke="var(--color-base)" strokeWidth="3" />
-        <circle cx="24" cy="24" r="6" fill="var(--color-sky)" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 40 52" aria-hidden="true" className="h-13 w-10 shrink-0">
-      <path d="M0 0h18a22 22 0 0 1 0 44H0Z" fill="currentColor" />
-      <path d="M12 12h6a10 10 0 0 1 0 20h-6Z" fill="var(--color-base)" />
-    </svg>
   );
 }
