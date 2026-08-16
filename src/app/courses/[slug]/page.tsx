@@ -8,6 +8,7 @@ import { CourseInformation } from "@/components/course/CourseInformation";
 import { CourseStructure } from "@/components/course/CourseStructure";
 import { CourseAdmissions } from "@/components/course/CourseAdmissions";
 import { CourseSpecification } from "@/components/course/CourseSpecification";
+import { ReadyToApply } from "@/components/course/ReadyToApply";
 import { getCourse, getCourseSlugs } from "@/lib/courses";
 import type { Course } from "@/lib/types";
 
@@ -86,6 +87,10 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
                 <CourseSpecification course={course} />
               </div>
             </section>
+          </div>
+
+          <div className="relative mt-20">
+            <ReadyToApply />
           </div>
         </Container>
       </div>

@@ -221,6 +221,17 @@ export const courseDetailPhotos = [
   { id: "lecture", src: "/images/gallery/photo-5.jpg", alt: "Course leader in a teaching session" },
 ] as const;
 
+/**
+ * Closing call to action on the course detail page. "Get more info" carries the
+ * solid fill and "Apply Now" the outline, which is the emphasis the frame sets.
+ */
+export const readyToApply = {
+  heading: "Ready to Apply?",
+  body: "Take the next step in your creative journey and join Victoria College of Arts and Design.",
+  outlineCta: { label: "Apply Now", href: "/#admissions" },
+  solidCta: { label: "Get more info", href: "/#contact" },
+} as const;
+
 export const storySection = {
   eyebrow: "Stories",
   heading: "Our Stories",
