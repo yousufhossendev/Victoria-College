@@ -48,22 +48,28 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
       >
         {/* The lighter band behind the hero photos runs on a little further,
             and the tab pill is centred on where it stops. */}
-        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-24 bg-card" />
+        <div aria-hidden="true" className="absolute inset-x-0 z-1  top-0 h-24 bg-card" />
 
         {/* Supplied arc backdrop. Decorative, and the 10% opacity is baked into
-            the asset, so it is dropped in as-is rather than re-drawn. */}
-        <Image
-          src="/icons/course-info-bg.svg"
-          alt=""
+            the asset, so it is dropped in as-is rather than re-drawn. The arc is
+            taller than the area it belongs to, so it is clipped to a top band
+            rather than left to trail down into the sections below. */}
+        <div
           aria-hidden="true"
-          width={481}
-          height={642}
-          unoptimized
-          className="pointer-events-none absolute left-0 top-0 z-0 w-120.25 max-w-[40%] select-none"
-        />
+          className="pointer-events-none absolute inset-x-0 top-0 h-144 overflow-hidden select-none"
+        >
+          <Image
+            src="/icons/course-info-bg.svg"
+            alt=""
+            width={481}
+            height={642}
+            unoptimized
+            className="absolute left-0 top-0 w-120.25 max-w-[40%]"
+          />
+        </div>
 
         <Container>
-          <div className="relative">
+          <div className="relative z-2">
             <CourseSectionNav sections={SECTIONS} />
           </div>
 

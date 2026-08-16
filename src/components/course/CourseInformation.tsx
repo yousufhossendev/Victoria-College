@@ -40,7 +40,7 @@ export function CourseInformation({ course }: { course: Course }) {
         {items.map((item) => (
           <div
             key={item.label}
-            className="flex h-60 flex-col items-center justify-center gap-3 rounded-card border border-border/60 bg-white/4 px-6 text-center"
+            className="flex h-60 flex-col items-center justify-center gap-3 rounded-card border border-border/60 bg-[#040D3D] px-6 text-center"
           >
             <svg
               aria-hidden="true"
