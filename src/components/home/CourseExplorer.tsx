@@ -11,10 +11,10 @@ export async function CourseExplorer() {
   const courses = await getCoursesBySlugs(exploreSection.courseSlugs);
 
   return (
-    <section className="relative border-b border-border/50 bg-base">
+    <section className="relative  bg-base">
       <Container>
         <div className="relative">
-          <GridRules columns={false} />
+          <GridRules columns={true} />
 
           <div className="relative py-16 lg:py-24">
             <div className="flex flex-wrap items-start justify-between gap-8">
@@ -36,6 +36,7 @@ export async function CourseExplorer() {
               <CourseAccordion courses={courses} />
 
               <Media
+                src="/images/home-courses.png"
                 alt={exploreSection.image.alt}
                 seed="explore-lecture"
                 sizes="(min-width: 1024px) 45vw, 100vw"

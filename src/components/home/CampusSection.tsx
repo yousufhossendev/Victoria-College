@@ -5,7 +5,7 @@ import { campusSection } from "@/data/site";
 
 export function CampusSection() {
   return (
-    <section id="campus" data-section="campuses" className="relative border-b border-border/50 bg-base">
+    <section id="campus" data-section="campuses" className="relative  border-border/50 bg-base">
       <Container>
         <div className="relative">
           <GridRules />

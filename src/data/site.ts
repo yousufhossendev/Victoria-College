@@ -55,28 +55,6 @@ export const hero = {
   cta: { label: "Explore Courses", href: "/courses" },
 } as const;
 
-/**
- * The hero collage is an overlapping composition rather than a grid, so tiles
- * and labels are positioned as percentages of the collage box. That keeps the
- * arrangement intact at any width and keeps the numbers in one place.
- */
-export const heroTiles = [
-  { id: "portrait", alt: "Fashion student portrait", left: "4.5%", top: "0.5%", width: "41.4%", height: "62.5%" },
-  { id: "studio", alt: "Styling shoot on a teal backdrop", left: "50.5%", top: "0%", width: "46.1%", height: "61.7%" },
-  { id: "pair", alt: "Two students in the media studio", left: "23.4%", top: "60.5%", width: "32.6%", height: "39.5%" },
-  { id: "reading", alt: "Student holding a book", left: "59.7%", top: "55.4%", width: "40.3%", height: "44.6%" },
-] as const;
-
-export const heroLabels = [
-  { text: "Fashion", left: "10.2%", top: "7.8%", rotate: -10, tone: "bg-pink text-white" },
-  { text: "Photography", left: "77.6%", top: "7.1%", rotate: -10, tone: "bg-magenta text-white" },
-  { text: "Graphic Design", left: "38.7%", top: "45.8%", rotate: -10, tone: "bg-navy text-cyan" },
-  { text: "Business", left: "87.4%", top: "41.3%", rotate: -10, tone: "bg-blue text-white" },
-  { text: "Media", left: "9.8%", top: "57.5%", rotate: -10, tone: "bg-cyan text-deep" },
-  { text: "Management", left: "21%", top: "81.3%", rotate: -8, tone: "bg-plum text-white" },
-  { text: "Marketing", left: "58%", top: "77.1%", rotate: -10, tone: "bg-sky text-white" },
-] as const;
-
 export const footerSection = {
   headline: [
     { text: "Get creative and ", highlight: false },

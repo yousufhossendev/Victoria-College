@@ -62,7 +62,7 @@ export function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-base/95 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-border/50 bg-[#040D3D] backdrop-blur-xl">
       <Container>
         <div className="relative">
           <GridRules />

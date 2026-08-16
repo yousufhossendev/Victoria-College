@@ -1,21 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Arrow } from "@/components/ui/ActionLink";
 import { GridRules } from "@/components/layout/GridRules";
-import { Media } from "@/components/ui/Media";
-import { hero, heroLabels, heroTiles } from "@/data/site";
+import { hero } from "@/data/site";
 
 export function Hero() {
   return (
-    <section className="relative border-b border-border/50 bg-base">
+    <section className="relative  bg-base">
       <Container>
         <div className="relative">
-          <GridRules columns={false} />
+          {/* <GridRules columns={false} /> */}
 
-          {/* fr, not %, so the columns account for the gap instead of overflowing. */}
-          <div className="relative grid items-center gap-14 py-16 lg:grid-cols-[47fr_53fr] lg:gap-8 lg:py-24">
-            <div className="px-0 lg:pr-10">
-              <h1 className="text-page-title uppercase text-white sm:text-display lg:text-hero">
+          {/*
+            minmax(0, …) so the tracks are free to shrink: without it the 120px
+            heading sets a min-content floor on the text column and squeezes the
+            image column well below its designed width.
+          */}
+          <div className="relative grid items-center gap-14 py-16 lg:grid-cols-[minmax(0,609fr)_minmax(0,671fr)] lg:gap-0 lg:py-24">
+            <div className="lg:pr-8">
+              <h1 className="text-hero uppercase text-white">
                 {hero.title.map((line) => (
                   <span key={line} className="block">
                     {line}
@@ -42,34 +46,21 @@ export function Hero() {
   );
 }
 
+/**
+ * Single supplied asset — the photo collage and its discipline labels are baked
+ * into the PNG, so this is one image rather than positioned tiles and text.
+ * Transparent background, so it sits directly on the section surface.
+ */
 function HeroCollage() {
   return (
-    <div className="relative w-full lg:-mr-10 lg:w-[calc(100%+2.5rem)]" style={{ aspectRatio: "705 / 664" }}>
-      {heroTiles.map((tile) => (
-        <Media
-          key={tile.id}
-          alt={tile.alt}
-          seed={tile.id}
-          priority
-          sizes="(min-width: 1024px) 40vw, 90vw"
-          className="absolute border border-white/10"
-          style={{ left: tile.left, top: tile.top, width: tile.width, height: tile.height }}
-        />
-      ))}
-
-      {heroLabels.map((label) => (
-        <span
-          key={label.text}
-          className={`absolute whitespace-nowrap px-4 py-2 text-default font-bold uppercase tracking-[0.02em] shadow-lg sm:px-5 sm:py-2.5 sm:text-lead ${label.tone}`}
-          style={{
-            left: label.left,
-            top: label.top,
-            transform: `translate(-50%, -50%) rotate(${label.rotate}deg)`,
-          }}
-        >
-          {label.text}
-        </span>
-      ))}
-    </div>
+    <Image
+      src="/images/home-hero.png"
+      alt="Student work across fashion, photography, graphic design, business, media, management and marketing"
+      width={710}
+      height={680}
+      priority
+      sizes="(min-width: 1024px) 48vw, 90vw"
+      className="h-auto w-full"
+    />
   );
 }

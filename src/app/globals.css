@@ -9,7 +9,7 @@
  */
 @theme {
   /* 1 · Colour — surfaces */
-  --color-base: #0a0a1e;
+  --color-base: #030A2E;
   --color-deep: #020928;
   --color-card: #061051;
   --color-card-alt: #0a1d3d;
@@ -45,7 +45,9 @@
 
   /* Homepage hero runs larger than the token frame's display size — the frame
      notes that individual elements may use values not listed on it. */
-  --text-hero: 7.5rem; /* 120 Bold */
+  /* Fluid: 120px at the 1440 frame, scaling down so "WELCOME" never outgrows
+     its grid track on narrower viewports. */
+  --text-hero: clamp(2.75rem, 8.4vw, 7.5rem); /* 120 Bold at frame width */
   --text-hero--line-height: 1;
   --text-hero--letter-spacing: -0.02em;
   --text-hero--font-weight: 700;

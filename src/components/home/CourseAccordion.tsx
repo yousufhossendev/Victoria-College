@@ -20,7 +20,7 @@ export function CourseAccordion({ courses }: { courses: Course[] }) {
         const panelId = `${baseId}-${course.slug}`;
 
         return (
-          <div key={course.slug} className="border-b border-border/70">
+          <div key={course.slug} className="border-b border-white/70">
             <h3>
               <button
                 type="button"
