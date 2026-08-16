@@ -174,6 +174,8 @@ export const degreeCourses = {
   eyebrow: "All Courses",
   heading: "Degree Courses",
   body: "Join Victoria College of Arts and Design and experience exceptional teaching, cutting-edge facilities, and industry connections that prepare you for a rewarding creative career.",
+  /** One asymmetric group, as drawn. Set to Infinity to list every course. */
+  limit: 4,
 } as const;
 
 /**

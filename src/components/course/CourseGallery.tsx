@@ -9,7 +9,7 @@ export function CourseGallery() {
   return (
     <section
       data-section="course-gallery"
-      className="relative overflow-hidden border-t border-border/50 bg-base py-16 lg:py-20"
+      className="relative overflow-hidden bg-base py-16 lg:py-20"
     >
       <ArcBackdrop viewBox="0 0 1440 500" cx={1330} cy={140} radii={[90, 150, 210, 270]} />
 

@@ -8,7 +8,12 @@ import { getCourses } from "@/lib/courses";
 import type { SchoolId } from "@/lib/types";
 
 export async function DegreeCourses({ school, query }: { school?: SchoolId; query?: string }) {
-  const results = await getCourses({ school, q: query });
+  const matches = await getCourses({ school, q: query });
+
+  // The design shows a single four-card group, so the grid is capped rather
+  // than repeating down the page. The other courses stay in the dataset and
+  // keep their detail pages — raise `limit` to show more.
+  const results = matches.slice(0, degreeCourses.limit);
 
   return (
     <>
