@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Arrow } from "@/components/ui/ActionLink";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import { Container } from "@/components/ui/Container";
 import { GridRules } from "@/components/layout/GridRules";
 import { Media } from "@/components/ui/Media";
@@ -28,7 +28,7 @@ export async function CourseExplorer() {
                 className="group flex h-14 w-full max-w-52 shrink-0 items-center justify-between rounded-chip border border-border px-5 text-default text-white transition-colors hover:border-pink hover:bg-card sm:w-52"
               >
                 {exploreSection.cta.label}
-                <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
 

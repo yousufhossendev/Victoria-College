@@ -1,3 +1,5 @@
+import { ArrowRight } from "@/components/ui/ArrowRight";
+
 const TONES = {
   navy: "bg-navy hover:brightness-150",
   magenta: "bg-magenta hover:brightness-115",
@@ -31,18 +33,7 @@ export function CircleArrow({
       aria-label={label}
       className={`grid size-arrow shrink-0 place-items-center rounded-arrow text-white transition-all ${TONES[tone]} ${className}`}
     >
-      <svg
-        viewBox="0 0 16 16"
-        aria-hidden="true"
-        className={`h-5 w-5 ${direction === "prev" ? "rotate-180" : ""}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 8h10M9 4l4 4-4 4" />
-      </svg>
+      <ArrowRight className={`h-6 w-6 ${direction === "prev" ? "rotate-180" : ""}`} />
     </button>
   );
 }

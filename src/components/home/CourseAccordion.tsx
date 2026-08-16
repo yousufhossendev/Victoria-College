@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useId, useState } from "react";
-import { Arrow } from "@/components/ui/ActionLink";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import type { Course } from "@/lib/types";
 
 /**
@@ -43,7 +43,7 @@ export function CourseAccordion({ courses }: { courses: Course[] }) {
             >
               <div className="min-h-0 overflow-hidden">
                 <div className="flex gap-4 pb-6 pr-4">
-                  <Arrow className="mt-1 shrink-0 text-pink" />
+                  <ArrowRight className="mt-0.5 h-5 w-5 text-pink" />
                   <p className="text-default text-pale-blue/70">
                     {course.overview[0]}{" "}
                     <Link

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { GridRules } from "@/components/layout/GridRules";
 import { Logo } from "@/components/layout/Logo";
-import { Arrow } from "@/components/ui/ActionLink";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import { courseDetailNav, headerCta, mainNav } from "@/data/site";
 
 interface NavItem {
@@ -125,7 +125,7 @@ export function Header() {
                 className="ml-8 hidden h-14 w-44 shrink-0 items-center justify-between rounded-chip border border-border px-5 text-default text-white transition-colors hover:border-pink hover:bg-card lg:inline-flex"
               >
                 {headerCta.label}
-                <Arrow />
+                <ArrowRight className="h-5 w-5" />
               </Link>
             ) : null}
 
@@ -181,7 +181,7 @@ export function Header() {
                 className="mb-2 mt-6 inline-flex h-14 w-full max-w-80 items-center justify-between rounded-chip border border-border px-5 text-default text-white"
               >
                 {headerCta.label}
-                <Arrow />
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </nav>
           </Container>

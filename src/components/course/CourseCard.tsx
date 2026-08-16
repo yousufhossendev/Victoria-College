@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import { Media } from "@/components/ui/Media";
 import { formatDuration, schoolsById } from "@/data/courses";
 import type { Course } from "@/lib/types";
@@ -128,17 +129,7 @@ function CardArrow({
         tone === "magenta" ? "accent-gradient group-hover:brightness-115" : "bg-navy group-hover:bg-pink"
       } ${className}`}
     >
-      <svg
-        viewBox="0 0 16 16"
-        className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 8h10M9 4l4 4-4 4" />
-      </svg>
+      <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-0.5" />
     </span>
   );
 }

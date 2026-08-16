@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import type { ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost" | "light";
@@ -33,24 +34,7 @@ export function ActionLink({
   return (
     <Link href={href} className={`${base} ${VARIANTS[variant]} ${className}`}>
       {children}
-      {withArrow ? <Arrow /> : null}
+      {withArrow ? <ArrowRight className="h-5 w-5" /> : null}
     </Link>
-  );
-}
-
-export function Arrow({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      className={`h-4 w-4 shrink-0 ${className}`}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 8h10M9 4l4 4-4 4" />
-    </svg>
   );
 }

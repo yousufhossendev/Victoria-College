@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import {
   useCallback,
   useEffect,
@@ -214,17 +215,7 @@ export function ArrowButton({
         hover:border-pink hover:bg-pink hover:text-white
         disabled:pointer-events-none disabled:opacity-25 ${className}`}
     >
-      <svg
-        viewBox="0 0 16 16"
-        className={`h-5 w-5 ${direction === "prev" ? "rotate-180" : ""}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 8h10M9 4l4 4-4 4" />
-      </svg>
+      <ArrowRight className={`h-6 w-6 ${direction === "prev" ? "rotate-180" : ""}`} />
     </button>
   );
 }

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { GridRules } from "@/components/layout/GridRules";
-import { Arrow } from "@/components/ui/ActionLink";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import { CircleArrow } from "@/components/ui/CircleArrow";
 import { Media } from "@/components/ui/Media";
 import { stories, storySection } from "@/data/site";
@@ -58,7 +58,7 @@ export function Stories() {
                 >
                   <span className="flex items-center px-6 text-meta">{storySection.cta}</span>
                   <span className="grid w-14 shrink-0 place-items-center bg-magenta">
-                    <Arrow className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
                   <span className="sr-only">: {active.title}</span>
                 </Link>
