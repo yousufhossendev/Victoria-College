@@ -31,7 +31,7 @@ export function CourseAdmissions({ course }: { course: Course }) {
     <div>
       <div className="text-center">
         <h2 className="text-card-title sm:text-subheading">{admissionsSection.heading}</h2>
-        <p className="mt-3 text-default text-pale-blue/70">{admissionsSection.subheading}</p>
+        <p className="mt-3 text-body text-pale-blue/70">{admissionsSection.subheading}</p>
       </div>
 
       <div className="mt-12 grid gap-5 lg:grid-cols-[309fr_951fr]">
@@ -48,10 +48,10 @@ export function CourseAdmissions({ course }: { course: Course }) {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => selectGroup(item.id)}
                 style={selected ? ACTIVE_TAB_SHAPE : undefined}
-                className={`px-5 py-4 text-left text-default transition-colors ${
+                className={`border-b border-border px-5 py-6 text-left text-default transition-colors ${
                   selected
                     ? "accent-gradient text-white"
-                    : "border-l border-border text-pale-blue/80 hover:text-white"
+                    : "border-l text-pale-blue/80 hover:text-white"
                 }`}
               >
                 <span aria-hidden="true" className={selected ? "" : "text-pale-blue/45"}>
@@ -63,7 +63,9 @@ export function CourseAdmissions({ course }: { course: Course }) {
           })}
         </div>
 
-        <div id={`${baseId}-panel`} role="tabpanel" className="min-w-0">
+        {/* Rows are separate blocks with a gap between them, not a bordered
+            stack — that is how the frame separates them. */}
+        <div id={`${baseId}-panel`} role="tabpanel" className="min-w-0 space-y-3">
           {group.sections.map((section, index) => (
             <SectionRow
               key={section.title}
@@ -98,7 +100,7 @@ function SectionRow({
   const panelId = `${baseId}-${section.title.replace(/\W+/g, "-")}`;
 
   return (
-    <div className="border-b border-border/50">
+    <div className="bg-white/4">
       <h3>
         <button
           type="button"
@@ -120,7 +122,7 @@ function SectionRow({
         }`}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="space-y-4 bg-white/4 px-6 py-6 text-meta text-pale-blue/70">
+          <div className="space-y-4 bg-white/6 px-6 py-6 text-default text-pale-blue/70">
             {extraItems ? <Block block={{ type: "list", items: extraItems }} /> : null}
             {section.blocks.map((block, index) => (
               <Block key={index} block={block} />
@@ -135,7 +137,7 @@ function SectionRow({
 function Block({ block }: { block: AdmissionBlock }) {
   if (block.type === "list") {
     return (
-      <ul className="ml-4 list-disc space-y-3 marker:text-pink">
+      <ul className="ml-4 list-disc space-y-3 marker:text-pale-blue/45">
         {block.items.map((item) => (
           <li key={item} className="pl-1">
             {item}
@@ -146,7 +148,7 @@ function Block({ block }: { block: AdmissionBlock }) {
   }
 
   if (block.type === "lead") {
-    return <p className="text-default font-semibold text-white">{block.text}</p>;
+    return <p className="text-body font-semibold text-white">{block.text}</p>;
   }
 
   return <p>{block.text}</p>;

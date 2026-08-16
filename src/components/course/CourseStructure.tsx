@@ -30,7 +30,7 @@ export function CourseStructure({ course }: { course: Course }) {
     <div>
       <div className="text-center">
         <h2 className="text-card-title sm:text-subheading">Course Structure &amp; Details</h2>
-        <p className="mt-3 text-default text-pale-blue/70">
+        <p className="mt-3 text-body text-pale-blue/70">
           Explore the modules for each year and find key admissions information.
         </p>
       </div>
@@ -71,10 +71,11 @@ export function CourseStructure({ course }: { course: Course }) {
         <div
           id={`${baseId}-year`}
           role="tabpanel"
-          className="-mt-7 rounded-button border border-border/60 bg-white/4 px-6 pb-8 pt-16 sm:px-8"
+          className="-mt-7 rounded-pill border border-border/60 bg-white/4 px-6 pb-8 pt-16 sm:px-8"
         >
           <p className="text-meta text-pale-blue/60">Modules may include</p>
-          <h3 className="mt-2 max-w-40 text-card-title text-white sm:text-subheading">
+          {/* Centred over its own two lines, as the frame sets it. */}
+          <h3 className="mt-2 max-w-40 text-center text-card-title text-white sm:text-subheading">
             Core Modules
           </h3>
 
@@ -83,15 +84,17 @@ export function CourseStructure({ course }: { course: Course }) {
               const open = unit.code === openCode;
               const panelId = `${baseId}-${unit.code}`;
 
+              // Every row carries its top rule, including the first — that is
+              // the line the frame draws under the "Core Modules" header.
               return (
-                <li key={unit.code} className="border-t border-border/50 first:border-t-0">
+                <li key={unit.code} className="border-t border-border/50">
                   <h4>
                     <button
                       type="button"
                       onClick={() => setOpenCode(open ? undefined : unit.code)}
                       aria-expanded={open}
                       aria-controls={panelId}
-                      className="group flex w-full items-center gap-5 py-6 text-left"
+                      className="group flex w-full items-center gap-12 py-6 text-left"
                     >
                       <span className="shrink-0 text-body text-pale-blue/55">
                         /{String(index + 1).padStart(2, "0")}/
@@ -106,7 +109,7 @@ export function CourseStructure({ course }: { course: Course }) {
 
                       <span
                         aria-hidden="true"
-                        className={`ml-auto grid h-16 w-16 shrink-0 place-items-center rounded-arrow text-white transition-all duration-300 ${
+                        className={`ml-auto grid h-20 w-20 shrink-0 place-items-center rounded-arrow text-white transition-all duration-300 ${
                           open ? "accent-gradient" : "bg-blue group-hover:brightness-125"
                         }`}
                       >
@@ -135,7 +138,9 @@ export function CourseStructure({ course }: { course: Course }) {
                     }`}
                   >
                     <div className="min-h-0 overflow-hidden">
-                      <p className="max-w-4xl pb-7 pl-13 pr-20 text-meta text-pale-blue/65">
+                      {/* pl matches the number column plus its gap, so the copy
+                          starts on the same edge as the module title. */}
+                      <p className="max-w-4xl pb-7 pl-20 pr-20 text-meta text-pale-blue/65">
                         {unit.description}
                       </p>
                     </div>
