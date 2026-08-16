@@ -159,14 +159,18 @@ export const galleryCourses = {
   eyebrow: "Our Gallery",
   heading: "Degree Courses",
   body: "Join Victoria College of Arts and Design and experience exceptional teaching, cutting-edge facilities, and industry connections that prepare you for a rewarding creative career.",
+  /**
+   * The supplied gallery folder, in file order. Heads up: photo-3 and photo-6
+   * are byte-identical copies of photo-1, so the same shot currently appears
+   * three times in the loop — swap those two files to fix it, no code change.
+   */
   images: [
-    { id: "painting", alt: "Student painting with watercolours" },
-    { id: "common-room", alt: "Students talking in the common room" },
-    { id: "pattern-table", alt: "Students working on garment patterns" },
-    { id: "lecture", alt: "Course leader in a teaching session" },
-    { id: "print-room", alt: "Student in the print room" },
-    { id: "studio-crit", alt: "Studio critique in progress" },
-    { id: "workshop", alt: "Students in the model-making workshop" },
+    { id: "common-room", src: "/images/gallery/photo-1.jpg", alt: "Students talking in the common room" },
+    { id: "painting", src: "/images/gallery/photo-2.jpg", alt: "Student painting with watercolours" },
+    { id: "common-room-2", src: "/images/gallery/photo-3.jpg", alt: "Students talking in the common room" },
+    { id: "pattern-table", src: "/images/gallery/photo-4.jpg", alt: "Students working on garment patterns in the studio" },
+    { id: "lecture", src: "/images/gallery/photo-5.jpg", alt: "Course leader in a teaching session" },
+    { id: "common-room-3", src: "/images/gallery/photo-6.jpg", alt: "Students talking in the common room" },
   ],
 } as const;
 

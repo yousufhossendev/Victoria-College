@@ -9,7 +9,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative overflow-hidden bg-base">
+    <footer id="contact" className="relative overflow-hidden bg-[#020928]">
       {/* Supplied arc backdrop. Decorative, and the 12% opacity is baked into
           the asset, so it is dropped in as-is rather than re-drawn. */}
       <Image
