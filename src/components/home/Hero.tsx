@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Arrow } from "@/components/ui/ActionLink";
-import { GridRules } from "@/components/layout/GridRules";
+import { ArrowRight } from "@/components/ui/ArrowRight";
 import { hero } from "@/data/site";
 
 export function Hero() {
@@ -34,7 +33,7 @@ export function Hero() {
                 className="group mt-10 flex h-14 w-full max-w-80 items-center justify-between rounded-chip border border-border px-6 text-default text-white transition-colors hover:border-pink hover:bg-card"
               >
                 {hero.cta.label}
-                <Arrow className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
 
