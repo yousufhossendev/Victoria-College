@@ -75,21 +75,40 @@ export const footerNav = [
   { label: "FAQs", href: "/#faqs" },
 ] as const;
 
+/**
+ * Social buttons. Each `icon` is a supplied 40px asset that already carries its
+ * own circle — the tinted disc for most, a solid white one for Facebook — so
+ * the markup only positions them and adds no ring of its own.
+ */
 export const socials = [
-  { id: "facebook", label: "Facebook", href: "https://facebook.com" },
-  { id: "x", label: "X", href: "https://x.com" },
-  { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com" },
-  { id: "instagram", label: "Instagram", href: "https://instagram.com" },
-  { id: "youtube", label: "YouTube", href: "https://youtube.com" },
-  { id: "tiktok", label: "TikTok", href: "https://tiktok.com" },
+  { id: "facebook", label: "Facebook", href: "https://facebook.com", icon: "/icons/facebook.svg" },
+  { id: "x", label: "X", href: "https://x.com", icon: "/icons/x.svg" },
+  { id: "linkedin", label: "LinkedIn", href: "https://linkedin.com", icon: "/icons/linkedin.svg" },
+  { id: "instagram", label: "Instagram", href: "https://instagram.com", icon: "/icons/insta.svg" },
+  { id: "youtube", label: "YouTube", href: "https://youtube.com", icon: "/icons/youtube.svg" },
+  { id: "tiktok", label: "TikTok", href: "https://tiktok.com", icon: "/icons/tiktok.svg" },
 ] as const;
 
-/** Accreditation marks. Real logo exports drop in as `logo`; until then the
- *  abbreviated wordmark below stands in. */
+/**
+ * Accreditation marks. All three exports share a 56px height but differ in
+ * width, so they are rendered on that shared baseline with their own widths.
+ */
 export const accreditations = [
-  { id: "advance-he", name: "Advance HE Affiliate Member", short: "AdvanceHE" },
-  { id: "qaa", name: "QAA Reviewed", short: "QAA" },
-  { id: "cyber-essentials", name: "Cyber Essentials Certified", short: "Cyber" },
+  {
+    id: "advance-he",
+    name: "Advance HE Affiliate Member",
+    logo: "/icons/advancehe.svg",
+    width: 116,
+    height: 56,
+  },
+  { id: "qaa", name: "QAA Reviewed", logo: "/icons/qaa.svg", width: 50, height: 56 },
+  {
+    id: "cyber-essentials",
+    name: "Cyber Essentials Certified",
+    logo: "/icons/cyber-essentials.svg",
+    width: 49,
+    height: 56,
+  },
 ] as const;
 
 /**

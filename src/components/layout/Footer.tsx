@@ -1,24 +1,33 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { ArcBackdrop } from "@/components/ui/ArcBackdrop";
 import { GridRules } from "@/components/layout/GridRules";
 import { LogoMark } from "@/components/layout/Logo";
-import { SocialIcon } from "@/components/layout/SocialIcon";
 import { accreditations, footerNav, footerSection, site, socials } from "@/data/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="relative overflow-hidden border-t border-border/50 bg-base">
-      <ArcBackdrop viewBox="0 0 1440 860" cx={1290} cy={240} radii={[130, 200, 270, 340]} />
+    <footer id="contact" className="relative overflow-hidden bg-base">
+      {/* Supplied arc backdrop. Decorative, and the 12% opacity is baked into
+          the asset, so it is dropped in as-is rather than re-drawn. */}
+      <Image
+        src="/icons/footer-bg.svg"
+        alt=""
+        aria-hidden="true"
+        width={509}
+        height={599}
+        unoptimized
+        className="pointer-events-none absolute right-0 top-0 w-127.25 max-w-[60%] select-none"
+      />
 
       <Container>
         <div className="relative">
           <GridRules />
 
           <div className="relative pt-14 lg:pt-20">
-            <LogoMark className="h-18 w-18" />
+            <LogoMark className="h-25 w-25" />
 
             <h2 className="mt-10 max-w-225 text-subheading sm:text-section lg:text-page-title">
               {footerSection.headline.map((part) => (
@@ -29,19 +38,25 @@ export function Footer() {
             </h2>
           </div>
 
-          <div className="relative mt-14 grid gap-12 border-t border-border/50 py-12 lg:grid-cols-2">
+          <div className="relative mt-14 grid gap-12 border-t border-[#384584] py-12 lg:grid-cols-2">
             <div>
-              <ul className="flex flex-wrap gap-3">
+              <ul className="flex flex-wrap gap-2">
                 {socials.map((social) => (
                   <li key={social.id}>
                     <a
                       href={social.href}
                       target="_blank"
                       rel="noreferrer noopener"
-                      aria-label={social.label}
-                      className="grid h-9 w-9 place-items-center rounded-arrow border border-border text-white transition-colors hover:border-pink hover:bg-pink"
+                      className="block rounded-arrow transition-opacity hover:opacity-75"
                     >
-                      <SocialIcon id={social.id} className="h-5 w-5" />
+                      <Image
+                        src={social.icon}
+                        alt={social.label}
+                        width={40}
+                        height={40}
+                        unoptimized
+                        className="h-10 w-10"
+                      />
                     </a>
                   </li>
                 ))}
@@ -82,13 +97,15 @@ export function Footer() {
 
               <ul className="mt-8 flex flex-wrap items-center gap-3">
                 {accreditations.map((item) => (
-                  <li
-                    key={item.id}
-                    title={item.name}
-                    className="grid h-11 place-items-center rounded-chip bg-white px-3 text-micro font-bold uppercase tracking-[0.06em] text-deep"
-                  >
-                    <span className="sr-only">{item.name}</span>
-                    <span aria-hidden="true">{item.short}</span>
+                  <li key={item.id}>
+                    <Image
+                      src={item.logo}
+                      alt={item.name}
+                      width={item.width}
+                      height={item.height}
+                      unoptimized
+                      className="h-14 w-auto"
+                    />
                   </li>
                 ))}
               </ul>
@@ -96,7 +113,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="relative flex flex-col gap-3 border-t border-border/50 py-7 text-meta text-pale-blue/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="relative flex flex-col gap-3 border-t border-[#384584] py-7 text-meta text-pale-blue/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.fullName}.
           </p>
