@@ -25,18 +25,23 @@ export function CourseCard({
 
   if (variant === "detail") {
     return (
-      <Link href={href} className={`group relative flex flex-col ${className}`}>
-        <div className="flex h-full flex-col overflow-hidden rounded-card bg-card">
+      <Link href={href} className={`group relative block ${className}`}>
+        <div className="relative h-full overflow-hidden rounded-card bg-card">
           <Media
             src={course.cardImage}
             alt={course.title}
             seed={`${course.slug}-detail`}
             priority={priority}
             sizes="(min-width: 1024px) 30vw, 100vw"
-            className="h-52 w-full shrink-0 lg:h-[52%]"
+            className="absolute inset-0 h-full w-full"
           />
 
-          <div className="flex min-h-0 flex-1 flex-col gap-4 p-6">
+          {/* The photo fades into the surface rather than stopping at an edge.
+              The top stop is a light scrim rather than fully transparent, so a
+              bright photo lands at the same contrast as a dark one. */}
+          <div className="absolute inset-0 bg-linear-to-t from-base from-42% via-base/85 via-58% to-base/25" />
+
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-6">
             <div className="flex flex-wrap gap-2">
               <Badge tone="school">{school.name}</Badge>
               <Badge tone="school">{formatDuration(course.durationMonths)}</Badge>
@@ -44,11 +49,11 @@ export function CourseCard({
 
             <h3 className="text-card-title text-white">{course.title}</h3>
 
-            <p className="line-clamp-5 text-meta text-pale-blue/70">{course.overview[0]}</p>
+            <p className="line-clamp-5 text-meta text-pale-blue/75">{course.overview[0]}</p>
 
-            <div className="pt-2">
+            <div className="pt-1 pr-20">
               <div className="text-meta font-bold text-white">School:</div>
-              <div className="mt-1 text-meta text-pale-blue/70">{school.name}</div>
+              <div className="mt-1 text-meta text-pale-blue/75">{school.name}</div>
             </div>
           </div>
         </div>
@@ -95,11 +100,11 @@ export function CourseCard({
           sizes="(min-width: 1024px) 33vw, 100vw"
           className="absolute inset-0 h-full w-full transition-transform duration-700 ease-out-soft group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-base via-base/75 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-base from-8% via-base/78 via-46% to-base/25" />
 
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-8 pr-24">
           <h3 className="text-card-title text-white">{course.title}</h3>
-          <p className="line-clamp-3 text-meta text-pale-blue/75">{course.summary}</p>
+          <p className="line-clamp-3 text-meta text-pale-blue/80">{course.summary}</p>
         </div>
       </div>
 

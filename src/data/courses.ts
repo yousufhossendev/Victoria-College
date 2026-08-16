@@ -49,6 +49,7 @@ export const courses: Course[] = [
     tuition: "£9,250 per year",
     location: "Shoreditch Campus",
     awardingBody: "Ravensbourne University London",
+    cardImage: "/images/courses/course-1.jpg",
     featured: true,
     gallery: [
       { caption: "Second-year identity project, Studio 4" },
@@ -217,6 +218,7 @@ export const courses: Course[] = [
     tuition: "£8,400 per year",
     location: "Shoreditch Campus",
     awardingBody: "Ravensbourne University London",
+    cardImage: "/images/courses/course-2.jpg",
     gallery: [
       { caption: "Materials library, ground floor" },
       { caption: "Scale model of the hospitality project" },
@@ -362,6 +364,7 @@ export const courses: Course[] = [
     tuition: "£9,750 per year",
     location: "Camden Campus",
     awardingBody: "Ravensbourne University London",
+    cardImage: "/images/courses/course-3.jpg",
     gallery: [
       { caption: "Render farm and grading suite" },
       { caption: "Motion capture session, Studio B" },
@@ -520,6 +523,7 @@ export const courses: Course[] = [
     tuition: "£9,750 per year",
     location: "Camden Campus",
     awardingBody: "Ravensbourne University London",
+    cardImage: "/images/courses/course-4.jpg",
     gallery: [
       { caption: "Playtest night, Studio C" },
       { caption: "Level blockout review" },
@@ -665,6 +669,7 @@ export const courses: Course[] = [
     tuition: "£7,900 per year",
     location: "Camden Campus",
     awardingBody: "Ravensbourne University London",
+    cardImage: "/images/courses/course-1.jpg",
     gallery: [
       { caption: "Usability testing lab" },
       { caption: "Component library crit" },
@@ -815,6 +820,7 @@ export const courses: Course[] = [
     tuition: "£9,400 per year",
     location: "Canary Wharf",
     awardingBody: "Arts University Plymouth",
+    cardImage: "/images/courses/course-2.jpg",
     featured: true,
     gallery: [
       { caption: "Sample room, second floor" },
@@ -962,6 +968,7 @@ export const courses: Course[] = [
     tuition: "£7,600 per year",
     location: "Kensington Campus",
     awardingBody: "Arts University Plymouth",
+    cardImage: "/images/courses/course-3.jpg",
     gallery: [
       { caption: "Main studio, three-head setup" },
       { caption: "Darkroom, analogue elective" },
@@ -1112,6 +1119,7 @@ export const courses: Course[] = [
     tuition: "£7,200 per year",
     location: "Canary Wharf",
     awardingBody: "Arts University Plymouth",
+    cardImage: "/images/courses/course-4.jpg",
     gallery: [
       { caption: "Pitch practice, seminar room 2" },
       { caption: "Industry panel, spring term" },
@@ -1257,6 +1265,7 @@ export const courses: Course[] = [
     tuition: "£9,250 per year",
     location: "Kensington Campus",
     awardingBody: "Arts University Plymouth",
+    cardImage: "/images/courses/course-1.jpg",
     gallery: [
       { caption: "Campaign shoot, Studio 2" },
       { caption: "Editorial layout crit" },
