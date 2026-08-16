@@ -35,6 +35,7 @@
   /* Sampled from section frames, not on the token sheet — the frame notes that
      individual elements may use values not listed on it. */
   --color-indigo: #3d4a91;
+  --color-panel: #101740;
 
   /* Semantic aliases — what the markup actually reaches for. */
   --color-accent: var(--color-pink);

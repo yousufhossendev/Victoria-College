@@ -119,36 +119,17 @@ export const quoteSection = {
     { text: "everyone has the opportunity", highlight: true },
     { text: " to fulfil their potential", highlight: false },
   ],
-  /** Positioned as percentages of the panel, same approach as the hero collage. */
-  photos: [
-    {
-      id: "survey",
-      alt: "Student surveying a studio space",
-      left: "4.5%",
-      top: "44.2%",
-      width: "30.9%",
-      height: "46%",
-      rotate: -3,
-    },
-    {
-      id: "painting",
-      alt: "Student painting at a desk",
-      left: "36.1%",
-      top: "38.7%",
-      width: "28.1%",
-      height: "56.5%",
-      rotate: -2,
-    },
-    {
-      id: "patterns",
-      alt: "Two students working on garment patterns",
-      left: "66.4%",
-      top: "6.6%",
-      width: "32.1%",
-      height: "63.9%",
-      rotate: 0,
-    },
-  ],
+  /**
+   * The photo group is one supplied asset. QuotePanel-3.png is the full
+   * composition — all three photos, already rotated, framed and overlapped on a
+   * transparent background — so QuotePanel-1.png and -2.png are the same two
+   * photos it already contains and are not used. If -3 is re-exported as just
+   * its own photo, swap this back to three positioned entries.
+   */
+  photos: {
+    src: "/images/QuotePanel-3.png",
+    alt: "Students at work — a maker in the workshop, a painter at her desk, and two students drafting garment patterns",
+  },
 } as const;
 
 /**
