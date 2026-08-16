@@ -172,6 +172,10 @@ export const storySection = {
   cta: "Read Article",
 } as const;
 
+/**
+ * Only the induction story has a supplied photo so far; the rest fall back to
+ * the branded placeholder until their exports land.
+ */
 export const stories = [
   {
     id: "induction-canary-wharf",
@@ -179,6 +183,7 @@ export const stories = [
     excerpt:
       "If you join Victoria College of Arts and Design, you can expect the highest calibre of teaching, cutting-edge facilities, and exceptional industry connections, which will help to prepare you for a rewarding career in the creative and tech industries.",
     href: "/#stories",
+    src: "/images/stories.png",
     alt: "Course leader welcoming students at induction",
   },
   {
@@ -187,6 +192,7 @@ export const stories = [
     excerpt:
       "The Victoria Building opens to the public every June for the largest graduate show in the city. Two hundred students hang their final projects, and buyers, studios and press walk the floor across three days of open viewing.",
     href: "/#stories",
+    src: undefined,
     alt: "Visitors at the annual graduate show",
   },
   {
@@ -195,6 +201,7 @@ export const stories = [
     excerpt:
       "From term three, the briefs stop being hypothetical. Students work to a real scope, a real budget and a client who changes their mind — and present the result in the room rather than through a tutor.",
     href: "/#stories",
+    src: undefined,
     alt: "Students presenting work to a client",
   },
   {
@@ -203,6 +210,7 @@ export const stories = [
     excerpt:
       "Letterpress, risograph, screen print, industrial machining and a full materials library, all open outside teaching hours. A tour of the workshops that sit underneath every course we run.",
     href: "/#stories",
+    src: undefined,
     alt: "The print workshop in use",
   },
 ] as const;

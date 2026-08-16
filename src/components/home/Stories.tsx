@@ -17,7 +17,7 @@ export function Stories() {
   const go = (delta: number) => setIndex((current) => (current + delta + count) % count);
 
   return (
-    <section id="stories" data-section="stories" className="relative border-b border-border/50 bg-base">
+    <section id="stories" data-section="stories" className="relative  bg-base">
       <Container>
         <div className="relative">
           <GridRules />
@@ -42,21 +42,33 @@ export function Stories() {
             >
               <Media
                 key={active.id}
+                src={active.src}
                 alt={active.alt}
                 seed={active.id}
                 sizes="(min-width: 1024px) 45vw, 100vw"
-                className="aspect-638/551 w-full animate-[fade-in_400ms_var(--ease-out-soft)] rounded-card"
+                className="aspect-630/543 w-full animate-[fade-in_400ms_var(--ease-out-soft)] rounded-card"
               />
 
               <div className="flex flex-col">
-                <h3 className="text-card-title sm:text-subheading">{active.title}</h3>
-                <p className="mt-8 max-w-142 text-body text-pale-blue/75">{active.excerpt}</p>
+                {/*
+                  The frame sets this column a step larger than the token scale
+                  allows: the title measures ~42px against the 36px subheading
+                  and 48px section tokens, so it is pinned to the frame's size
+                  at lg. The 42px is also what breaks the line after "Canary",
+                  as the design does.
+                */}
+                <h3 className="text-card-title sm:text-subheading lg:text-[2.625rem] lg:leading-[1.14]">
+                  {active.title}
+                </h3>
+                <p className="mt-8 max-w-142 text-lead text-pale-blue/75">{active.excerpt}</p>
 
                 <Link
                   href={active.href}
                   className="group mt-10 inline-flex h-15 w-fit items-stretch overflow-hidden rounded-chip bg-navy text-white transition-colors hover:bg-card lg:mt-auto"
                 >
-                  <span className="flex items-center px-6 text-meta">{storySection.cta}</span>
+                  <span className="flex items-center px-5 text-[0.875rem] font-medium">
+                    {storySection.cta}
+                  </span>
                   <span className="grid w-14 shrink-0 place-items-center bg-magenta">
                     <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </span>
