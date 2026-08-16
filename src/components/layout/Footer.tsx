@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ArcBackdrop } from "@/components/ui/ArcBackdrop";
 import { GridRules } from "@/components/layout/GridRules";
-import { Monogram } from "@/components/layout/Logo";
+import { LogoMark } from "@/components/layout/Logo";
 import { SocialIcon } from "@/components/layout/SocialIcon";
 import { accreditations, footerNav, footerSection, site, socials } from "@/data/site";
 
@@ -18,7 +18,7 @@ export function Footer() {
           <GridRules />
 
           <div className="relative pt-14 lg:pt-20">
-            <Monogram className="h-16 w-20" />
+            <LogoMark className="h-18 w-18" />
 
             <h2 className="mt-10 max-w-225 text-subheading sm:text-section lg:text-page-title">
               {footerSection.headline.map((part) => (

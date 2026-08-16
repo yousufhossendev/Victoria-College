@@ -7,7 +7,16 @@ import { Container } from "@/components/ui/Container";
 import { GridRules } from "@/components/layout/GridRules";
 import { Logo } from "@/components/layout/Logo";
 import { Arrow } from "@/components/ui/ActionLink";
-import { headerCta, primaryNav } from "@/data/site";
+import { courseDetailNav, headerCta, mainNav } from "@/data/site";
+
+interface NavItem {
+  label: string;
+  href: string;
+  children?: readonly { label: string; href: string }[];
+}
+
+/** Only an individual course page uses the fuller header. */
+const COURSE_DETAIL = /^\/courses\/[^/]+$/;
 
 export function Header() {
   const pathname = usePathname();
@@ -15,9 +24,9 @@ export function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  // Close everything on navigation, otherwise a menu hangs over the new page.
-  // Adjusting state during render rather than in an effect — this is derived
-  // from the route, so an effect would just cause a second render pass.
+  // Close everything on navigation. Adjusting state during render rather than
+  // in an effect — this is derived from the route, so an effect would only add
+  // a second render pass.
   const [lastPathname, setLastPathname] = useState(pathname);
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
@@ -25,7 +34,6 @@ export function Header() {
     setOpenMenu(null);
   }
 
-  // Dismiss an open dropdown on Escape or a click outside it.
   useEffect(() => {
     if (!openMenu) return;
 
@@ -42,8 +50,16 @@ export function Header() {
     };
   }, [openMenu]);
 
+  const detail = COURSE_DETAIL.test(pathname);
+  const items: readonly NavItem[] = detail ? courseDetailNav : mainNav;
+
   const isActive = (href: string) =>
     href === "/courses" ? pathname.startsWith("/courses") : pathname === href;
+
+  const linkClass = (href: string) =>
+    `flex items-center gap-1.5 text-default uppercase tracking-[0.03em] transition-colors hover:text-pink ${
+      isActive(href) ? "text-pink" : "text-white"
+    }`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-base/95 backdrop-blur-xl">
@@ -57,18 +73,16 @@ export function Header() {
             <nav
               ref={navRef}
               aria-label="Primary"
-              className="ml-auto hidden items-center gap-9 lg:flex"
+              className={`ml-auto hidden items-center lg:flex ${detail ? "gap-9" : "gap-12"}`}
             >
-              {primaryNav.map((item) =>
-                item.children.length > 0 ? (
+              {items.map((item) =>
+                item.children && item.children.length > 0 ? (
                   <div key={item.label} className="relative">
                     <button
                       type="button"
                       onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
                       aria-expanded={openMenu === item.label}
-                      className={`flex items-center gap-1.5 text-default uppercase tracking-[0.03em] transition-colors hover:text-pink ${
-                        isActive(item.href) ? "text-pink" : "text-white"
-                      }`}
+                      className={linkClass(item.href)}
                     >
                       <Slash />
                       {item.label}
@@ -95,31 +109,34 @@ export function Header() {
                     key={item.label}
                     href={item.href}
                     aria-current={isActive(item.href) ? "page" : undefined}
-                    className={`flex items-center gap-1.5 text-default uppercase tracking-[0.03em] transition-colors hover:text-pink ${
-                      isActive(item.href) ? "text-pink" : "text-white"
-                    }`}
+                    className={linkClass(item.href)}
                   >
-                    <Slash />
+                    {detail ? <Slash /> : null}
                     {item.label}
                   </Link>
                 ),
               )}
             </nav>
 
-            <Link
-              href={headerCta.href}
-              className="ml-8 hidden h-14 w-44 shrink-0 items-center justify-between rounded-chip border border-border px-5 text-default text-white transition-colors hover:border-pink hover:bg-card lg:inline-flex"
-            >
-              {headerCta.label}
-              <Arrow />
-            </Link>
+            {/* The CTA belongs to the course detail treatment only. */}
+            {detail ? (
+              <Link
+                href={headerCta.href}
+                className="ml-8 hidden h-14 w-44 shrink-0 items-center justify-between rounded-chip border border-border px-5 text-default text-white transition-colors hover:border-pink hover:bg-card lg:inline-flex"
+              >
+                {headerCta.label}
+                <Arrow />
+              </Link>
+            ) : null}
 
             <button
               type="button"
               onClick={() => setMobileOpen((value) => !value)}
               aria-expanded={mobileOpen}
               aria-controls="site-menu"
-              className="ml-auto flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.25 text-white lg:hidden"
+              className={`flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-1.25 text-white transition-colors hover:text-pink ${
+                detail ? "ml-auto lg:hidden" : "ml-auto lg:ml-6"
+              }`}
             >
               <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
               <Bar className={mobileOpen ? "translate-y-1.75 rotate-45" : ""} />
@@ -131,10 +148,10 @@ export function Header() {
       </Container>
 
       {mobileOpen ? (
-        <div id="site-menu" className="border-t border-border/50 bg-deep lg:hidden">
+        <div id="site-menu" className="border-t border-border/50 bg-deep">
           <Container>
             <nav aria-label="Site menu" className="flex flex-col py-4">
-              {primaryNav.map((item) => (
+              {items.map((item) => (
                 <div key={item.label} className="border-b border-border/40 last:border-0">
                   <Link
                     href={item.href}
@@ -142,7 +159,7 @@ export function Header() {
                   >
                     {item.label}
                   </Link>
-                  {item.children.length > 0 ? (
+                  {item.children && item.children.length > 0 ? (
                     <ul className="-mt-1 pb-3 pl-4">
                       {item.children.map((child) => (
                         <li key={child.label}>

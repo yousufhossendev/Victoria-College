@@ -9,10 +9,22 @@ export const site = {
 } as const;
 
 /**
- * Header navigation. Items with `children` render the chevron from the design
- * and open a real dropdown — the affordance is in the frame, so it works.
+ * The header has two designed treatments. The homepage and the courses listing
+ * use this short set with no CTA; the course detail page uses the fuller set
+ * below. One Header component switches between them by route — the shell,
+ * logo and mobile menu are shared, so nothing is duplicated.
  */
-export const primaryNav = [
+export const mainNav = [
+  { label: "About VCAD", href: "/#about" },
+  { label: "Courses", href: "/courses" },
+  { label: "Contact us", href: "/#contact" },
+] as const;
+
+/**
+ * Course detail header. Items with `children` render the chevron from the
+ * design and open a real dropdown — the affordance is in the frame, so it works.
+ */
+export const courseDetailNav = [
   {
     label: "About VCAD",
     href: "/#about",

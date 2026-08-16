@@ -17,17 +17,17 @@
   --color-border: #394564;
 
   /* 1 · Colour — accent */
-  --color-pink: #ff3798;
-  --color-magenta: #e018b0;
+  --color-pink: #ff379e;
+  --color-magenta: #e018e0;
   --color-magenta-lt: #e948b6;
   --color-plum: #912491;
   --color-blue: #2262eb;
   --color-cyan: #00ffd2;
 
   /* 1 · Colour — light & text */
-  --color-text: #e8ecf3;
+  --color-text: #ebecf3;
   --color-white: #ffffff;
-  --color-sky: #88c9ee;
+  --color-sky: #8ec8ee;
   --color-pale-blue: #d7e2fb;
   --color-pale-blue-2: #c1f2fd;
   --color-ice-blue: #e9f7ff;
@@ -222,9 +222,9 @@
     transform: translateX(-100%);
     background-image: linear-gradient(
       90deg,
-      rgb(136 201 238 / 0) 0%,
-      rgb(136 201 238 / 0.14) 50%,
-      rgb(136 201 238 / 0) 100%
+      rgb(142 200 238 / 0) 0%,
+      rgb(142 200 238 / 0.14) 50%,
+      rgb(142 200 238 / 0) 100%
     );
     animation: vcad-shimmer 1.6s infinite;
   }

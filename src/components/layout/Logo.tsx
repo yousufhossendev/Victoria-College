@@ -1,31 +1,47 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/data/site";
 
 /**
- * Monogram is a stand-in for the real logo asset — the Figma file is view-only
- * for this account, so the mark could not be exported. Geometry and colours are
- * taken from the accent tokens; swap in the SVG export when it is available.
+ * Full lockup — mark plus stacked wordmark — from the supplied asset.
+ * `unoptimized` because the image optimizer refuses SVG without
+ * `dangerouslyAllowSVG`, and an SVG gains nothing from it anyway.
  */
-export function Monogram({ className = "" }: { className?: string }) {
+export function Logo({ className = "h-13 w-auto" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 36 28" aria-hidden="true" className={className}>
-      <path d="M0 0h17L8.5 13Z" fill="var(--color-blue)" />
-      <path d="M19 0h17l-8.5 13Z" fill="var(--color-pink)" />
-      <path d="M8.5 15 17 28H0Z" fill="var(--color-cyan)" />
-      <path d="M27.5 15 36 28H19Z" fill="var(--color-magenta)" />
-    </svg>
+    <Link href="/" aria-label={`${site.fullName} home`} className="shrink-0">
+      <Image
+        src="/icons/logo.svg"
+        alt={site.fullName}
+        width={134}
+        height={50}
+        priority
+        unoptimized
+        className={className}
+      />
+    </Link>
   );
 }
 
-export function Logo() {
+/**
+ * Mark only, for the footer. These are the mark's own paths lifted from
+ * logo.svg, so it stays identical to the asset — the wordmark is simply not
+ * part of the footer treatment.
+ */
+export function LogoMark({ className = "" }: { className?: string }) {
   return (
-    <Link href="/" className="flex items-center gap-3" aria-label={`${site.fullName} home`}>
-      <Monogram className="h-7 w-9 shrink-0" />
-      <span className="leading-none">
-        <span className="block text-default font-bold leading-[1.15] text-white">Victoria</span>
-        <span className="block text-default font-bold leading-[1.15] text-white">College</span>
-        <span className="mt-0.5 block text-micro text-pale-blue/70">of Arts and Design</span>
-      </span>
-    </Link>
+    <svg viewBox="0 0 50 50" aria-hidden="true" className={className}>
+      <path d="M49.8603 0.238417H0.54776V49.5861H49.8603V0.238417Z" fill="#061665" />
+      <path d="M5.05472 6.47493L15.3053 23.0394L25.5529 6.47493H5.05472Z" fill="#FF379E" />
+      <path d="M5.05466 43.1437H25.5529L15.3052 26.5793L5.05466 43.1437Z" fill="#8EC8EE" />
+      <path
+        d="M36.6616 23.0367H44.9008V6.47227H36.6616C25.8299 6.65797 25.8356 22.851 36.6616 23.0367Z"
+        fill="#00FFD2"
+      />
+      <path
+        d="M37.2342 43.3495H28.9951V26.785H37.2342C48.066 26.9707 48.0603 43.1638 37.2342 43.3495Z"
+        fill="#E018E0"
+      />
+    </svg>
   );
 }
