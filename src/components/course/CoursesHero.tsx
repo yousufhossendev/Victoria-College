@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { ArcBackdrop } from "@/components/ui/ArcBackdrop";
 import { GridRules } from "@/components/layout/GridRules";
 import { Media } from "@/components/ui/Media";
 import { coursesHero } from "@/data/site";
@@ -11,9 +11,19 @@ export function CoursesHero() {
   return (
     <section
       data-section="courses-hero"
-      className="relative overflow-hidden border-b border-border/50 bg-base"
+      className="relative overflow-hidden bg-base"
     >
-      <ArcBackdrop viewBox="0 0 1440 580" cx={1300} cy={300} radii={[120, 200, 280, 360]} />
+      {/* Supplied arc backdrop. Decorative, and the 10% opacity is baked into
+          the asset, so it is dropped in as-is rather than re-drawn. */}
+      <Image
+        src="/icons/course-hero-bg.svg"
+        alt=""
+        aria-hidden="true"
+        width={527}
+        height={452}
+        unoptimized
+        className="pointer-events-none absolute right-0 top-0 w-131.75 max-w-[60%] select-none"
+      />
 
       <Container>
         <div className="relative">
@@ -22,19 +32,21 @@ export function CoursesHero() {
           {/* Flanking photos are decorative flourishes — dropped below lg,
               where there is no room beside the centred text. */}
           <Media
+            src={left.src}
             alt={left.alt}
             seed={left.id}
-            sizes="212px"
-            className="absolute left-[4%] top-0 hidden aspect-212/140 w-53 rounded-chip lg:block"
+            sizes="208px"
+            className="absolute left-[4%] top-3 hidden aspect-208/195 w-52 rounded-chip lg:block"
           />
           <Media
+            src={right.src}
             alt={right.alt}
             seed={right.id}
-            sizes="176px"
-            className="absolute right-0 top-24 hidden aspect-176/193 w-44 rounded-chip lg:block"
+            sizes="194px"
+            className="absolute right-0 top-24 hidden aspect-194/195 w-48.5 rounded-chip lg:block"
           />
 
-          <div className="relative mx-auto max-w-200 py-20 text-center lg:py-28">
+          <div className="relative mx-auto max-w-200 py-20 text-center lg:py-40">
             <nav aria-label="Breadcrumb" className="text-default text-pale-blue/70">
               <ol className="flex items-center justify-center gap-2">
                 <li>
@@ -53,7 +65,7 @@ export function CoursesHero() {
               {coursesHero.heading}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-180 text-default text-pale-blue/80">
+            <p className="mx-auto mt-6 max-w-200 text-body text-pale-blue/80">
               {coursesHero.body}
             </p>
           </div>

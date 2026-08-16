@@ -176,12 +176,26 @@ export const degreeCourses = {
   body: "Join Victoria College of Arts and Design and experience exceptional teaching, cutting-edge facilities, and industry connections that prepare you for a rewarding creative career.",
 } as const;
 
+/**
+ * The two flanking photos are supplied at their final size, so the layout uses
+ * each export's own intrinsic dimensions rather than a shared frame.
+ */
 export const coursesHero = {
   heading: "Explore Our Courses",
   body: "Join Victoria College of Arts and Design and experience exceptional teaching, cutting-edge facilities, and industry connections that prepare you for a rewarding creative career.",
   photos: [
-    { id: "sofa", alt: "Students talking in a common room", side: "left" },
-    { id: "drawing", alt: "Student drawing at a desk", side: "right" },
+    {
+      id: "sofa",
+      src: "/images/course-hero-1.png",
+      alt: "Students talking together on a sofa in a common room",
+      side: "left",
+    },
+    {
+      id: "drawing",
+      src: "/images/course-hero-2.png",
+      alt: "Students drawing at a studio desk",
+      side: "right",
+    },
   ],
 } as const;
 
