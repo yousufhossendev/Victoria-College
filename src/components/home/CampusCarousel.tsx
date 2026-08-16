@@ -37,6 +37,7 @@ export function CampusCarousel() {
       <div className="absolute inset-0 flex flex-col overflow-hidden lg:left-[25.1%] lg:top-0 lg:h-[92.4%] lg:w-1/2">
         <Media
           key={active.slug}
+          src={active.src}
           alt={active.alt}
           seed={active.slug}
           sizes="(min-width: 1024px) 50vw, 100vw"
@@ -96,7 +97,13 @@ function SidePhoto({
         side === "left" ? "left-0" : "left-[56.25%]"
       }`}
     >
-      <Media alt="" seed={`${campus.slug}-peek`} sizes="44vw" className="h-full w-full" />
+      <Media
+        src={campus.src}
+        alt=""
+        seed={`${campus.slug}-peek`}
+        sizes="44vw"
+        className="h-full w-full"
+      />
     </button>
   );
 }

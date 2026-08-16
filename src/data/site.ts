@@ -248,28 +248,37 @@ export const campusSection = {
   discoverLabel: "Discover",
 } as const;
 
+/**
+ * Campuses. Three photos were supplied (campuse-1..3), so they go to the first
+ * three in frame order; Camden has no export yet and falls back to the branded
+ * placeholder until one arrives.
+ */
 export const campuses = [
   {
     slug: "canary-wharf",
     name: "Canary Wharf Campus",
-    alt: "Students outside the Canary Wharf campus",
+    src: "/images/campuse-1.png",
+    alt: "Students walking across the square outside the Canary Wharf campus",
     blurb: "Our largest campus, home to business, media and the main lecture theatres.",
   },
   {
     slug: "shoreditch",
     name: "Shoreditch Campus",
-    alt: "The Shoreditch campus building",
+    src: "/images/campuse-2.png",
+    alt: "The Shoreditch campus building on the corner of the high street",
     blurb: "Studios, workshops and the print rooms, in the middle of the design district.",
   },
   {
     slug: "kensington",
     name: "Kensington Campus",
-    alt: "The Kensington campus building",
+    src: "/images/campuse-3.png",
+    alt: "The red brick and zinc-clad Kensington campus building",
     blurb: "Fashion and photography, with the sample rooms and three shooting studios.",
   },
   {
     slug: "camden",
     name: "Camden Campus",
+   src: "/images/campuse-1.png",
     alt: "The Camden campus building",
     blurb: "Animation, games and sound, plus the motion capture stage.",
   },
