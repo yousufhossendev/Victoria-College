@@ -89,7 +89,7 @@ export default async function CourseDetailPage({ params }: { params: Params }) {
 
             <section id={SECTIONS[2].id} aria-label={SECTIONS[2].label} className="scroll-mt-28">
               <CourseAdmissions course={course} />
-              <div className="mt-6">
+              <div className="mt-25">
                 <CourseSpecification course={course} />
               </div>
             </section>
